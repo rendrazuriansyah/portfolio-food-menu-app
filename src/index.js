@@ -29,7 +29,7 @@ function Menu() {
 	return (
 		<main className="menu">
 			<h2>Menu Kita</h2>
-			{numFoods > 0 && (
+			{numFoods > 0 ? (
 				<ul className="foods">
 					{data.map((food, index) => (
 						<Food
@@ -38,26 +38,21 @@ function Menu() {
 						/>
 					))}
 				</ul>
+			) : (
+				<p>Menu sedang kosong, silahkan datang lagi besok!. 😁</p>
 			)}
-			{/* <Food
-				nama="Sate Ayam"
-				deskripsi="Potongan daging ayam yang ditusuk dan dibakar, disajikan dengan bumbu kacang"
-				harga={15000}
-				foto="food/sate-ayam.jpg"
-				stok={Math.random() >= 0.5 ? true : false}
-			/> */}
 		</main>
 	);
 }
 function Footer() {
 	const hour = new Date().getHours();
-	const jamBuka = 10;
+	const jamBuka = 7;
 	const jamTutup = 22;
 	const isOpen = hour <= jamBuka || hour >= jamTutup;
 
 	return (
 		<footer className="footer">
-			{isOpen && (
+			{isOpen ? (
 				<div className="order">
 					<p>
 						{new Date().getFullYear()} Warung Makan Rendra | Jam
@@ -65,6 +60,11 @@ function Footer() {
 					</p>
 					<button className="btn">Orders</button>
 				</div>
+			) : (
+				<p>
+					Warung Makan Rendra sedang tutup. Silahkan datang besok
+					sekitar jam {jamBuka}-{jamTutup}.
+				</p>
 			)}
 		</footer>
 	);
