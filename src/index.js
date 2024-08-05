@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import data from "./data.js";
 import "./index.css";
 
 function App() {
@@ -26,20 +27,21 @@ function Menu() {
 	return (
 		<main className="menu">
 			<h2>Menu Kita</h2>
-			<Food
+			<ul className="foods">
+				{data.map((food, index) => (
+					<Food
+						foodObj={food}
+						key={index}
+					/>
+				))}
+			</ul>
+			{/* <Food
 				nama="Sate Ayam"
 				deskripsi="Potongan daging ayam yang ditusuk dan dibakar, disajikan dengan bumbu kacang"
 				harga={15000}
 				foto="food/sate-ayam.jpg"
 				stok={Math.random() >= 0.5 ? true : false}
-			/>
-			<Food
-				nama="Sate Ayam"
-				deskripsi="Potongan daging ayam yang ditusuk dan dibakar, disajikan dengan bumbu kacang"
-				harga={25000}
-				foto="food/nasi-goreng.jpg"
-				stok={Math.random() >= 0.5 ? true : false}
-			/>
+			/> */}
 		</main>
 	);
 }
@@ -64,19 +66,19 @@ function Footer() {
 
 function Food(props) {
 	return (
-		<div className="food">
+		<li className="food">
 			<img
-				src={props.foto}
-				alt={props.nama}
+				src={props.foodObj.foto}
+				alt={props.foodObj.nama}
 				width="100"
 				height="70"
 			/>
 			<div>
-				<h3>{props.nama}</h3>
-				<p>{props.deskripsi}</p>
-				<span>{props.harga}</span>
+				<h3>{props.foodObj.nama}</h3>
+				<p>{props.foodObj.deskripsi}</p>
+				<span>{props.foodObj.harga}</span>
 			</div>
-		</div>
+		</li>
 	);
 }
 
