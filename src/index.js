@@ -4,10 +4,31 @@ import ReactDOM from "react-dom/client";
 function App() {
 	return (
 		<div>
-			<h1>Hello world</h1>
-			<Food />
+			<Header />
+			<Menu />
+			<Footer />
 		</div>
 	);
+}
+
+function Header() {
+	return <h1>Warteg Rendra</h1>;
+}
+
+function Menu() {
+	return (
+		<div>
+			<h2>
+				<Food />
+				<Food />
+				<Food />
+				<Food />
+			</h2>
+		</div>
+	);
+}
+function Footer() {
+	return <footer>{new Date().getFullYear()} Warteg Rendra</footer>;
 }
 
 function Food() {
@@ -16,6 +37,8 @@ function Food() {
 			<img
 				src="food/soto-betawi.jpg"
 				alt=""
+				width="100"
+				height="78"
 			/>
 			<h2>Soto Betawi</h2>
 			<p>Soto betawi dari Jakarta</p>
