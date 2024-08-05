@@ -25,12 +25,21 @@ function Header() {
 function Menu() {
 	return (
 		<main className="menu">
-			<h2>
-				<Food />
-				<Food />
-				<Food />
-				<Food />
-			</h2>
+			<h2>Menu Kita</h2>
+			<Food
+				nama="Sate Ayam"
+				deskripsi="Potongan daging ayam yang ditusuk dan dibakar, disajikan dengan bumbu kacang"
+				harga={15000}
+				foto="food/sate-ayam.jpg"
+				stok={Math.random() >= 0.5 ? true : false}
+			/>
+			<Food
+				nama="Sate Ayam"
+				deskripsi="Potongan daging ayam yang ditusuk dan dibakar, disajikan dengan bumbu kacang"
+				harga={25000}
+				foto="food/nasi-goreng.jpg"
+				stok={Math.random() >= 0.5 ? true : false}
+			/>
 		</main>
 	);
 }
@@ -46,24 +55,27 @@ function Footer() {
 	}
 
 	return (
-		<footer>
+		<footer className="footer">
 			{new Date().getFullYear()} Warung Makan Rendra | Jam buka {jamBuka}{" "}
 			- Jam tutup {jamTutup}
 		</footer>
 	);
 }
 
-function Food() {
+function Food(props) {
 	return (
-		<div>
+		<div className="food">
 			<img
-				src="food/soto-betawi.jpg"
-				alt=""
+				src={props.foto}
+				alt={props.nama}
 				width="100"
-				height="78"
+				height="70"
 			/>
-			<h2>Soto Betawi</h2>
-			<p>Soto betawi dari Jakarta</p>
+			<div>
+				<h3>{props.nama}</h3>
+				<p>{props.deskripsi}</p>
+				<span>{props.harga}</span>
+			</div>
 		</div>
 	);
 }
