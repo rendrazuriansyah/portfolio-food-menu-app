@@ -24,17 +24,21 @@ function Header() {
 }
 
 function Menu() {
+	const foods = data;
+	const numFoods = foods.length;
 	return (
 		<main className="menu">
 			<h2>Menu Kita</h2>
-			<ul className="foods">
-				{data.map((food, index) => (
-					<Food
-						foodObj={food}
-						key={index}
-					/>
-				))}
-			</ul>
+			{numFoods > 0 && (
+				<ul className="foods">
+					{data.map((food, index) => (
+						<Food
+							foodObj={food}
+							key={index}
+						/>
+					))}
+				</ul>
+			)}
 			{/* <Food
 				nama="Sate Ayam"
 				deskripsi="Potongan daging ayam yang ditusuk dan dibakar, disajikan dengan bumbu kacang"
@@ -49,17 +53,19 @@ function Footer() {
 	const hour = new Date().getHours();
 	const jamBuka = 10;
 	const jamTutup = 22;
-
-	if (hour < jamBuka || hour > jamTutup) {
-		alert("Warung Makan Rendra sedang tutup");
-	} else {
-		alert("Warung Makan Rendra sedang buka");
-	}
+	const isOpen = hour <= jamBuka || hour >= jamTutup;
 
 	return (
 		<footer className="footer">
-			{new Date().getFullYear()} Warung Makan Rendra | Jam buka {jamBuka}{" "}
-			- Jam tutup {jamTutup}
+			{isOpen && (
+				<div className="order">
+					<p>
+						{new Date().getFullYear()} Warung Makan Rendra | Jam
+						buka {jamBuka} - Jam tutup {jamTutup}
+					</p>
+					<button className="btn">Orders</button>
+				</div>
+			)}
 		</footer>
 	);
 }
