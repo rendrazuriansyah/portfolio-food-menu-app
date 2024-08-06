@@ -47,12 +47,12 @@ function Menu() {
 function Footer() {
 	const hour = new Date().getHours();
 	const jamBuka = 7;
-	const jamTutup = 22;
-	const isOpen = hour <= jamBuka || hour >= jamTutup;
+	const jamTutup = 20;
+	const isOpen = hour >= jamBuka || hour <= jamTutup;
 
-	return (
-		<footer className="footer">
-			{isOpen ? (
+	if (isOpen) {
+		return (
+			<footer>
 				<div className="order">
 					<p>
 						{new Date().getFullYear()} Warung Makan Rendra | Jam
@@ -60,14 +60,18 @@ function Footer() {
 					</p>
 					<button className="btn">Orders</button>
 				</div>
-			) : (
+			</footer>
+		);
+	} else {
+		return (
+			<footer className="footer">
 				<p>
 					Warung Makan Rendra sedang tutup. Silahkan datang besok
 					sekitar jam {jamBuka}-{jamTutup}.
 				</p>
-			)}
-		</footer>
-	);
+			</footer>
+		);
+	}
 }
 
 function Food(props) {
