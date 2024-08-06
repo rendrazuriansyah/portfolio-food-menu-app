@@ -105,7 +105,7 @@ function Food(props) {
 	// Destructuring Assignment
 	const { nama, deskripsi, harga, foto, stok } = props.foodObj;
 	return (
-		<li className="food">
+		<li className={`food  ${!stok ? "sold-out" : ""}`}>
 			<img
 				src={foto}
 				alt={nama}
@@ -115,7 +115,7 @@ function Food(props) {
 			<div>
 				<h3>{nama}</h3>
 				<p>{deskripsi}</p>
-				<span>{harga}</span>
+				<span>{stok ? harga : "Habis"}</span>
 			</div>
 		</li>
 	);
