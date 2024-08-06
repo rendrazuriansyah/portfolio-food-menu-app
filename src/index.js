@@ -52,26 +52,44 @@ function Footer() {
 
 	if (isOpen) {
 		return (
-			<footer>
-				<div className="order">
-					<p>
-						{new Date().getFullYear()} Warung Makan Rendra | Jam
-						buka {jamBuka} - Jam tutup {jamTutup}
-					</p>
-					<button className="btn">Orders</button>
-				</div>
-			</footer>
+			<FooterOpenHour
+				jamBuka={jamBuka}
+				jamTutup={jamTutup}
+			/>
 		);
 	} else {
 		return (
-			<footer className="footer">
-				<p>
-					Warung Makan Rendra sedang tutup. Silahkan datang besok
-					sekitar jam {jamBuka}-{jamTutup}.
-				</p>
-			</footer>
+			<FooterCloseHour
+				jamBuka={jamBuka}
+				jamTutup={jamTutup}
+			/>
 		);
 	}
+}
+
+function FooterOpenHour(props) {
+	return (
+		<footer>
+			<div className="order">
+				<p>
+					{new Date().getFullYear()} Warung Makan Rendra | Jam buka{" "}
+					{props.jamBuka} - Jam tutup {props.jamTutup}
+				</p>
+				<button className="btn">Orders</button>
+			</div>
+		</footer>
+	);
+}
+
+function FooterCloseHour(props) {
+	return (
+		<footer className="footer">
+			<p>
+				Warung Makan Rendra sedang tutup. Silahkan datang besok sekitar
+				jam {props.jamBuka}-{props.jamTutup}.
+			</p>
+		</footer>
+	);
 }
 
 function Food(props) {
