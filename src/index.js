@@ -30,14 +30,21 @@ function Menu() {
 		<main className="menu">
 			<h2>Menu Kita</h2>
 			{numFoods > 0 ? (
-				<ul className="foods">
-					{data.map((food, index) => (
-						<Food
-							foodObj={food}
-							key={index}
-						/>
-					))}
-				</ul>
+				<>
+					<p>
+						Aneka makanan Indonesia yang disajikan oleh warung makan
+						rendra sebagai pemenuhan makanan kesehatan yang
+						diperlukan dalam kehidupan sehari-hari.
+					</p>
+					<ul className="foods">
+						{data.map((food, index) => (
+							<Food
+								foodObj={food}
+								key={index}
+							/>
+						))}
+					</ul>
+				</>
 			) : (
 				<p>Menu sedang kosong, silahkan datang lagi besok!. 😁</p>
 			)}
