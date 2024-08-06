@@ -67,13 +67,14 @@ function Footer() {
 	}
 }
 
-function FooterOpenHour(props) {
+// Parameter Destructuring
+function FooterOpenHour({ jamBuka, jamTutup }) {
 	return (
 		<footer>
 			<div className="order">
 				<p>
 					{new Date().getFullYear()} Warung Makan Rendra | Jam buka{" "}
-					{props.jamBuka} - Jam tutup {props.jamTutup}
+					{jamBuka} - Jam tutup {jamTutup}
 				</p>
 				<button className="btn">Orders</button>
 			</div>
@@ -81,30 +82,33 @@ function FooterOpenHour(props) {
 	);
 }
 
-function FooterCloseHour(props) {
+// Parameter Destructuring
+function FooterCloseHour({ jamBuka, jamTutup }) {
 	return (
 		<footer className="footer">
 			<p>
 				Warung Makan Rendra sedang tutup. Silahkan datang besok sekitar
-				jam {props.jamBuka}-{props.jamTutup}.
+				jam {jamBuka}-{jamTutup}.
 			</p>
 		</footer>
 	);
 }
 
 function Food(props) {
+	// Destructuring Assignment
+	const { nama, deskripsi, harga, foto, stok } = props.foodObj;
 	return (
 		<li className="food">
 			<img
-				src={props.foodObj.foto}
-				alt={props.foodObj.nama}
+				src={foto}
+				alt={nama}
 				width="100"
 				height="70"
 			/>
 			<div>
-				<h3>{props.foodObj.nama}</h3>
-				<p>{props.foodObj.deskripsi}</p>
-				<span>{props.foodObj.harga}</span>
+				<h3>{nama}</h3>
+				<p>{deskripsi}</p>
+				<span>{harga}</span>
 			</div>
 		</li>
 	);
